@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LibraryManagement
 {
-    // Class representing a book with a unique identifier
+    
     public class Book
     {
         public Guid Id { get; }
@@ -23,7 +23,7 @@ namespace LibraryManagement
         }
     }
 
-    // Class representing the library that manages books
+    
     public class Library
     {
         private List<Book> books;
@@ -33,14 +33,14 @@ namespace LibraryManagement
             books = new List<Book>();
         }
 
-        // Adds a book to the library
+       
         public void AddBook(Book book)
         {
             books.Add(book);
             Console.WriteLine($"Book '{book.Title}' added to the library.");
         }
 
-        // Searches for books that match the search term in title, author, or ISBN
+        
         public List<Book> SearchBooks(string searchTerm)
         {
             return books.Where(b =>
@@ -50,7 +50,7 @@ namespace LibraryManagement
             ).ToList();
         }
 
-        // Borrows a book based on a fuzzy match on the title
+        
         public bool BorrowBook(string title)
         {
             Book book = books.FirstOrDefault(b => b.Title.Contains(title.Trim(), StringComparison.OrdinalIgnoreCase) && b.IsAvailable);
@@ -65,7 +65,7 @@ namespace LibraryManagement
             return false;
         }
 
-        // Returns a book based on a fuzzy match on the title
+        
         public bool ReturnBook(string title)
         {
             Book book = books.FirstOrDefault(b => b.Title.Contains(title.Trim(), StringComparison.OrdinalIgnoreCase) && !b.IsAvailable);
@@ -81,14 +81,14 @@ namespace LibraryManagement
         }
     }
 
-    // Main program with an interactive command line interface
+    
     public class Program
     {
         public static void Main()
         {
             Library library = new Library();
 
-            // Adding some default books
+           
             library.AddBook(new Book("The Great Gatsby", "F. Scott Fitzgerald", "9780743273565"));
             library.AddBook(new Book("To Kill a Mockingbird", "Harper Lee", "9780061120084"));
             library.AddBook(new Book("1984", "George Orwell", "9780451524935"));
